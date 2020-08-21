@@ -1,0 +1,70 @@
+
+<div class="container-fluid ">
+        start date <input [(ngModel)]="startDate" type="date" id="exampleInput" name="input" ng-model="example.value"
+                 placeholder="yyyy-dd-MM" min="2020-01-01" max="2021-12-31" required />
+       
+       end date <input [(ngModel)]="endDate" type="date" id="exampleInput" name="input" ng-model="example.value"
+                 placeholder="yyyy-dd-MM" min="2020-01-01" max="2021-12-31" required />
+
+       <button class="btn btn-primary" (click)="refresh()">Click me!</button>
+
+    </div>
+
+   
+<div class="container-fluid ">
+  sort by price  <input type="checkbox" [(ngModel)]="price" (click)="refreshAndSort()"  />
+</div>
+<div class="container-fluid " >
+  sort by  hotel name   <input  type="checkbox"  [(ngModel)]="name"  (click)="refreshAndSortByName()"  />
+  
+
+</div>
+<br>
+
+                <div class="container-fluid h-100 d-flex flex-col">
+                        <div class="row">
+                            <div class="col-lg-2" *ngFor="let city of data ">
+                                            {{city.city }}  <input  type="checkbox"    (click)="filterByCity(city.city )"  />
+                             
+                            
+
+                            </div>
+
+                            <br>
+                            <div class="col-lg-4" *ngFor="let name of data " > 
+
+                                            {{ name.name }}  <input  type="checkbox"    (click)="filterByName(name.name )"  />
+                             
+                             
+                            </div>
+                        </div>
+                    </div>
+ <br>
+
+ <div  class="container-fluid "  [innerHTML]="nights"    >   </div>
+<div class="container-fluid ">
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">price</th>
+        <th scope="col">city</th>
+        <th scope="col">name</th>
+        <th scope="col">available_on</th>
+        <th scope="col">total price</th>
+      </tr>
+    </thead>
+    <tbody>
+              <tr *ngFor="let item of data ">
+                <td>{{item.price}}</td>
+                <td>{{item.city }}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.available_on}}</td>
+                <td>{{item.totalPrice}}</td>
+                
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+   
